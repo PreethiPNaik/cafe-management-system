@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2E8B57;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        h1 {
+            color: #2b0c6e;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        .section h2 {
+            color: #4682B4;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .section .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .section .buttons button {
+            padding: 12px 25px;
+            margin: 8px;
+            border: none;
+            color: #fff;
+            background-color: #2E8B57;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .section .buttons button:hover {
+            background-color: #1E4D2B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cafe Management System</h1>
+
+        <!-- Manage Menu Items -->
+        <div class="section">
+            <h2>Menu Management</h2>
+            <div class="buttons">
+                <button onclick="location.href='addMenuItem.html'">Add Menu Item</button>
+                <button onclick="location.href='removeMenuItem.html'">Remove Menu Item</button>
+                <button onclick="location.href='viewMenu.html'">View Menu</button>
+                <button onclick="location.href='updateMenuItem.html'">Update Menu Item</button>
+            </div>
+        </div>
+
+        <!-- Manage Orders -->
+        <div class="section">
+            <h2>Order Management</h2>
+            <div class="buttons">
+                <button onclick="location.href='addOrder.html'">Add Order</button>
+                <!--<button onclick="location.href='removeOrder.html'">Cancel Order</button>-->
+                <button onclick="location.href='viewOrders.html'">View Orders</button>
+            </div>
+        </div>
+
+        <!-- Manage Staff -->
+      <!--  <div class="section">
+            <h2>Staff Management</h2>
+            <div class="buttons">
+                <button onclick="location.href='addStaff.html'">Add Staff Member</button>
+                <button onclick="location.href='removeStaff.html'">Remove Staff Member</button>
+                <button onclick="location.href='viewStaff.html'">View Staff</button>
+                <button onclick="location.href='updateStaff.html'">Update Staff Info</button>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>

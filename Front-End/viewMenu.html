@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2b9437;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2E8B57;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        button {
+            padding: 12px;
+            background-color: #3ea12f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>View Menu</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="productsTableBody">
+                <!-- Product rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <button onclick="location.href='home.html'">Back to Home</button>
+    </div>
+
+    <script>
+       async function viewItems() {
+            try {
+                const response = await fetch('http://localhost:8000/api/items');
+                if (response.ok) {
+                    const products = await response.json();
+                    const tableBody = document.getElementById('itemsTableBody');
+                    tableBody.innerHTML = '';
+                    products.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.price}</td>`;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    alert('Error fetching items.');
+                }
+            } catch (e) {
+                alert('Network error: ' + e.message);
+            }
+        }
+        
+        window.onload = viewItems;
+    </script>
+
+</body>
+</html>

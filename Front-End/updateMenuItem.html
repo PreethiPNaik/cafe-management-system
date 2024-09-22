@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Menu Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #b8d1c3;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #17201b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #11d42e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1E4D2B;
+        }
+
+        .home-button {
+            background-color: #333;
+        }
+
+        .home-button:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Update Menu Item</h2>
+        <form onsubmit="event.preventDefault(); updateItem();">
+            <label for="searchItemName">Search Item by Name</label>
+            <input type="text" id="searchItemName" name="searchItemName" placeholder="Enter item name to search" required>
+
+            <label for="newItemName">New Item Name</label>
+            <input type="text" id="newItemName" name="newItemName" placeholder="Enter new item name">
+
+            <label for="newItemPrice">New Item Price</label>
+            <input type="number" id="newItemPrice" name="newItemPrice" placeholder="Enter new item price">
+
+            <div class="buttons">
+                <button type="submit">Update Item</button>
+                <button class="back-btn" onclick="location.href='home.html'">Back to Home</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+         async function updateProduct() {
+            const productId = document.getElementById('itemId').value;
+            const item = {
+            searchItemName : document.getElementById("searchItemName").value,
+            newItemName : document.getElementById("newItemName").value,
+            newItemPrice : document.getElementById("newItemPrice").value
+            };
+
+            try {
+                const response = await fetch(`http://localhost:8000/api/items/${itemId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(product)
+                });
+                if (response.ok) {
+                    alert('Product updated successfully!');
+                } else {
+                    const error = await response.text();
+                    alert('Error: ' + error);
+                }
+            } catch (e) {
+                alert('Network error: ' + e.message);
+            }
+        }
+    </script>
+
+</body>
+</html>
